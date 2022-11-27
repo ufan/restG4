@@ -143,6 +143,7 @@ SimulationManager::~SimulationManager() {
     delete fRestGeant4PhysicsLists;
 
     for (auto& outputManager : fOutputManagerContainer) {
+      if(outputManager)
         delete outputManager;
     }
 }

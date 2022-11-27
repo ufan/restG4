@@ -193,6 +193,7 @@ void TRestGeant4Hits::InsertStep(const G4Step* step) {
 
     const auto trackKineticEnergy = step->GetTrack()->GetKineticEnergy() / CLHEP::keV;
 
+    //[fix] todo: delete it, sensitiveVolume info is not used in recording hits
     auto sensitiveVolumeName =
         geometryInfo.GetAlternativeNameFromGeant4PhysicalName(metadata->GetSensitiveVolume());
 

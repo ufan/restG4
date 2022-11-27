@@ -127,6 +127,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct() {
         }
 
         fGeneratorTranslation = pVol->GetTranslation();
+        // [bug]: SURFACE condittion is not used here
         if (spatialGeneratorTypeEnum == TRestGeant4PrimaryGeneratorTypes::SpatialGeneratorTypes::SURFACE ||
             spatialGeneratorTypeEnum == TRestGeant4PrimaryGeneratorTypes::SpatialGeneratorTypes::VOLUME) {
             restG4Metadata->fGeant4PrimaryGeneratorInfo.fSpatialGeneratorPosition = {

@@ -311,6 +311,7 @@ void PrimaryGeneratorAction::SetParticleDirection(Int_t particleSourceIndex,
                                                   const TRestGeant4Particle& particle) {
     auto simulationManager = fSimulationManager;
     TRestGeant4Metadata* restG4Metadata = simulationManager->GetRestMetadata();
+    // [bugfix] todo: why only use the first source's direction? particleSourceIndex is not used
     TRestGeant4ParticleSource* source = restG4Metadata->GetParticleSource(0);
 
     const auto& primaryGeneratorInfo = restG4Metadata->GetGeant4PrimaryGeneratorInfo();
@@ -326,12 +327,6 @@ void PrimaryGeneratorAction::SetParticleDirection(Int_t particleSourceIndex,
     }
 
     // generator type
-    const string& spatialGeneratorTypeName = primaryGeneratorInfo.GetSpatialGeneratorType().Data();
-    const auto spatialGeneratorTypeEnum = StringToSpatialGeneratorTypes(spatialGeneratorTypeName);
-
-    const string& spatialGeneratorShapeName = primaryGeneratorInfo.GetSpatialGeneratorShape().Data();
-    const auto spatialGeneratorShapeEnum = StringToSpatialGeneratorShapes(spatialGeneratorShapeName);
-
     if (angularDistTypeEnum == AngularDistributionTypes::ISOTROPIC) {
         direction = GetIsotropicVector();
     } else if (angularDistTypeEnum == AngularDistributionTypes::TH1D) {

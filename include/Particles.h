@@ -5,6 +5,8 @@
 #include <G4VPhysicsConstructor.hh>
 #include <globals.hh>
 
+//[todo] this class is not used in the framework
+
 class Particles : public G4VPhysicsConstructor {
    public:
     Particles(const G4String& name = "particles");
